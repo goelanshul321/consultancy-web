@@ -151,7 +151,7 @@
   .frame-line .ev{color:var(--accent-ink)}
   .frame-line .br{color:var(--brass-ink)}
   .founders{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-  .founder{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow-sm)}
+  .founder{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
   .founder .ava{width:84px;height:84px;border-radius:16px;display:grid;place-items:center;font-family:'Fraunces';font-weight:700;font-size:30px;color:#fff;margin-bottom:20px}
   .founder.a .ava{background:linear-gradient(150deg,#0F6B5C,#0E8A6E)}
   .founder.k .ava{background:linear-gradient(150deg,#3a3a40,#1d1d22)}
@@ -165,7 +165,8 @@
   .founder li{font-family:'JetBrains Mono';font-size:12px;color:var(--muted);display:flex;gap:9px;align-items:baseline}
   .founder li::before{content:"—";color:var(--accent)}
   .founder.k li::before{color:var(--brass)}
-  .founder .pf{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-family:'JetBrains Mono';font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--accent-ink);border-bottom:1px solid var(--line-2);padding-bottom:3px;transition:.2s}
+  .founder .links{display:flex;gap:24px;margin-top:auto;padding-top:26px}
+  .founder .pf{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono';font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--accent-ink);border-bottom:1px solid var(--line-2);padding-bottom:3px;transition:.2s}
   .founder .pf:hover{color:var(--ink);border-color:var(--accent)}
   .founder.k .pf{color:var(--brass-ink)}
   .founder.k .pf:hover{border-color:var(--brass)}
@@ -453,16 +454,22 @@
         <div class="loc">Bangalore, India</div>
         <p>Builds the brain — autonomous AI systems that read messy real-world documents and act on them. Grew from intern to tech lead scaling platforms to millions before going deep on agentic AI.</p>
         <ul><li>~80% client man-hours cut with agentic AI</li><li>Agentic control plane — LangGraph · Vertex AI · OCR/IDP</li><li>Scaled platforms to 9M+ users · 250K+ DAU</li></ul>
-        <a class="pf" href="https://doesthework.pro/" target="_blank" rel="noopener">View portfolio ↗</a>
+        <div class="links">
+          <a class="pf" href="https://doesthework.pro/" target="_blank" rel="noopener">Portfolio ↗</a>
+          <a class="pf" href="https://www.linkedin.com/in/anshulgoel21/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
       </div>
       <div class="founder k reveal">
         <div class="ava"><span>KS</span></div>
         <h3>Karan Singla</h3>
-        <div class="role">Senior AI Full Stack Developer · LangChain/LangGraph agents · RAG · ML (TF/PyTorch)<br>Senior Dev @ Labcorp · M.Eng, Concordia University, Montreal, Canada</div>
+        <div class="role">Senior AI Full Stack Developer<br>LangChain/LangGraph agents · RAG · ML (TF/PyTorch)<br>Senior Dev @ Labcorp<br>M.Eng, Concordia University, Montreal, Canada</div>
         <div class="loc">Bangalore, India</div>
         <p>Builds the whole product — LLM agents and RAG on top, React + Python/Go/Java underneath, ML models in the loop. 8+ years shipping AI products across two continents, with a Master's in Software Engineering.</p>
         <ul><li>GenAI in production — LangChain/LangGraph agents · RAG</li><li>65% faster API responses · 50× data scale</li><li>Mentored 10+ engineers</li></ul>
-        <a class="pf" href="https://karan-portfolio-theta-lyart.vercel.app" target="_blank" rel="noopener">View portfolio ↗</a>
+        <div class="links">
+          <a class="pf" href="https://karan-portfolio-theta-lyart.vercel.app" target="_blank" rel="noopener">Portfolio ↗</a>
+          <a class="pf" href="https://www.linkedin.com/in/karansingla-dev/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
       </div>
     </div>
   </div>
