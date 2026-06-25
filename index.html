@@ -1351,6 +1351,27 @@
             color: var(--accent-ink);
             transform: translateY(-2px)
         }
+
+        /* interactive toolkit */
+        .tk-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px }
+        .tk-pill { font-family: 'JetBrains Mono'; font-size: 11.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: .2s; white-space: nowrap }
+        .tk-pill:hover { border-color: var(--line-2); color: var(--ink); transform: translateY(-1px) }
+        .tk-pill.on { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: var(--shadow-sm) }
+        .tk-cloud { display: flex; flex-wrap: wrap; gap: 10px }
+        .tk-chip { display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 500; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; box-shadow: var(--shadow-sm); transition: transform .22s, border-color .22s, box-shadow .22s, background .22s; will-change: transform }
+        .tk-chip:hover { transform: translateY(-3px); border-color: var(--accent); background: var(--accent-soft) }
+        .tk-chip .d { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0 }
+        .tk-chip .d.ai { background: var(--accent) }
+        .tk-chip .d.eng { background: var(--brass) }
+        .tk-chip.hide { display: none }
+        .tk-meta { margin-top: 26px; font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: .03em; color: var(--muted-2) }
+        .tk-meta b { color: var(--accent-ink); font-weight: 600 }
+        .tk-legend { display: inline-flex; gap: 18px; margin-left: 14px }
+        .tk-legend span { display: inline-flex; align-items: center; gap: 7px }
+        .tk-legend i { width: 6px; height: 6px; border-radius: 50% }
+        .tk-legend .ai { background: var(--accent) }
+        .tk-legend .eng { background: var(--brass) }
+        @media(max-width:560px){ .tk-legend{display:none} }
         /* why */
         
         .why-grid {
@@ -2157,44 +2178,68 @@
             <div class="reveal">
                 <div class="kicker"><span class="no">09</span> Toolkit</div>
                 <h2 class="sec-title">One combined stack</h2>
-                <p class="sec-intro">Both founders' tech, merged into a single studio toolkit across the whole pipeline.</p>
+                <p class="sec-intro">Both founders' tech, merged into one studio toolkit across the whole pipeline. <span style="color:var(--accent-ink)">Tap a layer</span> to see where we go deep.</p>
             </div>
-            <div class="stack-grid reveal">
-                <div class="stack-col">
-                    <h4>Models</h4>
-                    <div class="chips"><span class="chip">Claude</span><span class="chip">GPT-4-class</span><span class="chip">Gemini</span><span class="chip">Llama / Qwen</span><span class="chip">Mistral</span><span class="chip">Model routing</span></div>
+            <div class="reveal">
+                <div class="tk-filters" id="tkfilters">
+                    <button class="tk-pill on" data-f="all" type="button">All</button>
+                    <button class="tk-pill" data-f="models" type="button">Models</button>
+                    <button class="tk-pill" data-f="agentic" type="button">Agentic &amp; LLM</button>
+                    <button class="tk-pill" data-f="retrieval" type="button">Retrieval / RAG</button>
+                    <button class="tk-pill" data-f="evals" type="button">Evals &amp; LLMOps</button>
+                    <button class="tk-pill" data-f="docintel" type="button">Doc Intelligence</button>
+                    <button class="tk-pill" data-f="ml" type="button">ML</button>
+                    <button class="tk-pill" data-f="frontend" type="button">Frontend</button>
+                    <button class="tk-pill" data-f="backend" type="button">Backend</button>
+                    <button class="tk-pill" data-f="cloud" type="button">Cloud &amp; DevOps</button>
                 </div>
-                <div class="stack-col">
-                    <h4>Agentic &amp; LLM</h4>
-                    <div class="chips"><span class="chip">LangGraph</span><span class="chip">LangChain</span><span class="chip">MCP</span><span class="chip">Tool-calling</span><span class="chip">Multi-agent</span><span class="chip">Guardrails</span></div>
+                <div class="tk-cloud" id="tkcloud">
+                    <span class="tk-chip" data-cat="models"><i class="d ai"></i>Claude</span>
+                    <span class="tk-chip" data-cat="models"><i class="d ai"></i>GPT-4-class</span>
+                    <span class="tk-chip" data-cat="models"><i class="d ai"></i>Gemini</span>
+                    <span class="tk-chip" data-cat="models"><i class="d ai"></i>Llama / Qwen</span>
+                    <span class="tk-chip" data-cat="models"><i class="d ai"></i>Mistral</span>
+                    <span class="tk-chip" data-cat="models"><i class="d ai"></i>Model routing</span>
+                    <span class="tk-chip" data-cat="agentic"><i class="d ai"></i>LangGraph</span>
+                    <span class="tk-chip" data-cat="agentic"><i class="d ai"></i>LangChain</span>
+                    <span class="tk-chip" data-cat="agentic"><i class="d ai"></i>MCP</span>
+                    <span class="tk-chip" data-cat="agentic"><i class="d ai"></i>Tool-calling</span>
+                    <span class="tk-chip" data-cat="agentic"><i class="d ai"></i>Multi-agent</span>
+                    <span class="tk-chip" data-cat="agentic"><i class="d ai"></i>Guardrails</span>
+                    <span class="tk-chip" data-cat="retrieval"><i class="d ai"></i>Embeddings</span>
+                    <span class="tk-chip" data-cat="retrieval"><i class="d ai"></i>pgvector</span>
+                    <span class="tk-chip" data-cat="retrieval"><i class="d ai"></i>Pinecone</span>
+                    <span class="tk-chip" data-cat="retrieval"><i class="d ai"></i>Hybrid search</span>
+                    <span class="tk-chip" data-cat="retrieval"><i class="d ai"></i>Reranking</span>
+                    <span class="tk-chip" data-cat="evals"><i class="d ai"></i>LLM-as-judge</span>
+                    <span class="tk-chip" data-cat="evals"><i class="d ai"></i>Golden datasets</span>
+                    <span class="tk-chip" data-cat="evals"><i class="d ai"></i>LangSmith / Langfuse</span>
+                    <span class="tk-chip" data-cat="evals"><i class="d ai"></i>Prompt versioning</span>
+                    <span class="tk-chip" data-cat="evals"><i class="d ai"></i>Token-cost</span>
+                    <span class="tk-chip" data-cat="docintel"><i class="d ai"></i>Textract</span>
+                    <span class="tk-chip" data-cat="docintel"><i class="d ai"></i>Document AI</span>
+                    <span class="tk-chip" data-cat="docintel"><i class="d ai"></i>LlamaParse</span>
+                    <span class="tk-chip" data-cat="docintel"><i class="d ai"></i>IDP</span>
+                    <span class="tk-chip" data-cat="ml"><i class="d ai"></i>TensorFlow</span>
+                    <span class="tk-chip" data-cat="ml"><i class="d ai"></i>PyTorch</span>
+                    <span class="tk-chip" data-cat="ml"><i class="d ai"></i>Scikit-learn</span>
+                    <span class="tk-chip" data-cat="frontend"><i class="d eng"></i>React</span>
+                    <span class="tk-chip" data-cat="frontend"><i class="d eng"></i>Angular</span>
+                    <span class="tk-chip" data-cat="frontend"><i class="d eng"></i>TypeScript</span>
+                    <span class="tk-chip" data-cat="backend"><i class="d eng"></i>Python</span>
+                    <span class="tk-chip" data-cat="backend"><i class="d eng"></i>Go</span>
+                    <span class="tk-chip" data-cat="backend"><i class="d eng"></i>Java</span>
+                    <span class="tk-chip" data-cat="backend"><i class="d eng"></i>Node.js</span>
+                    <span class="tk-chip" data-cat="backend"><i class="d eng"></i>gRPC</span>
+                    <span class="tk-chip" data-cat="cloud"><i class="d eng"></i>AWS</span>
+                    <span class="tk-chip" data-cat="cloud"><i class="d eng"></i>GCP</span>
+                    <span class="tk-chip" data-cat="cloud"><i class="d eng"></i>Azure</span>
+                    <span class="tk-chip" data-cat="cloud"><i class="d eng"></i>Docker</span>
+                    <span class="tk-chip" data-cat="cloud"><i class="d eng"></i>Kubernetes</span>
+                    <span class="tk-chip" data-cat="cloud"><i class="d eng"></i>CI/CD</span>
                 </div>
-                <div class="stack-col">
-                    <h4>Retrieval / RAG</h4>
-                    <div class="chips"><span class="chip">Embeddings</span><span class="chip">pgvector</span><span class="chip">Pinecone</span><span class="chip">Hybrid search</span><span class="chip">Reranking</span></div>
-                </div>
-                <div class="stack-col">
-                    <h4>Evals &amp; LLMOps</h4>
-                    <div class="chips"><span class="chip">LLM-as-judge</span><span class="chip">Golden datasets</span><span class="chip">LangSmith / Langfuse</span><span class="chip">Prompt versioning</span><span class="chip">Token-cost</span></div>
-                </div>
-                <div class="stack-col">
-                    <h4>Document Intelligence</h4>
-                    <div class="chips"><span class="chip">Textract</span><span class="chip">Document AI</span><span class="chip">LlamaParse</span><span class="chip">IDP</span></div>
-                </div>
-                <div class="stack-col">
-                    <h4>ML</h4>
-                    <div class="chips"><span class="chip">TensorFlow</span><span class="chip">PyTorch</span><span class="chip">Scikit-learn</span></div>
-                </div>
-                <div class="stack-col">
-                    <h4>Frontend</h4>
-                    <div class="chips"><span class="chip">React</span><span class="chip">Angular</span><span class="chip">TypeScript</span></div>
-                </div>
-                <div class="stack-col">
-                    <h4>Backend &amp; Languages</h4>
-                    <div class="chips"><span class="chip">Python</span><span class="chip">Go</span><span class="chip">Java</span><span class="chip">Node.js</span><span class="chip">gRPC</span></div>
-                </div>
-                <div class="stack-col">
-                    <h4>Cloud &amp; DevOps</h4>
-                    <div class="chips"><span class="chip">AWS</span><span class="chip">GCP</span><span class="chip">Azure</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">CI/CD</span></div>
+                <div class="tk-meta" id="tkmeta">Showing all <b>43 tools</b> across 9 layers
+                    <span class="tk-legend"><span><i class="ai"></i> AI &amp; LLM</span><span><i class="eng"></i> Engineering</span></span>
                 </div>
             </div>
         </div>
@@ -2341,6 +2386,46 @@
             tio.observe(tlwrap);
         }
     </script>
+<script>
+(function () {
+  var cloud = document.getElementById('tkcloud');
+  if (!cloud) return;
+  var chips = [].slice.call(cloud.querySelectorAll('.tk-chip'));
+  var pills = [].slice.call(document.querySelectorAll('#tkfilters .tk-pill'));
+  var meta = document.getElementById('tkmeta');
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var labels = {
+    all: 'all <b>43 tools</b> across 9 layers',
+    models: '<b>Models</b> · 6 tools', agentic: '<b>Agentic &amp; LLM</b> · 6 tools',
+    retrieval: '<b>Retrieval / RAG</b> · 5 tools', evals: '<b>Evals &amp; LLMOps</b> · 5 tools',
+    docintel: '<b>Document Intelligence</b> · 4 tools', ml: '<b>ML</b> · 3 tools',
+    frontend: '<b>Frontend</b> · 3 tools', backend: '<b>Backend &amp; Languages</b> · 5 tools',
+    cloud: '<b>Cloud &amp; DevOps</b> · 6 tools'
+  };
+  var legend = '<span class="tk-legend"><span><i class="ai"></i> AI &amp; LLM</span><span><i class="eng"></i> Engineering</span></span>';
+
+  function setFilter(f) {
+    var first = new Map();
+    chips.forEach(function (c) { if (!c.classList.contains('hide')) first.set(c, c.getBoundingClientRect()); });
+    chips.forEach(function (c) { c.classList.toggle('hide', !(f === 'all' || c.dataset.cat === f)); });
+    if (!reduced) {
+      chips.forEach(function (c) {
+        if (c.classList.contains('hide')) return;
+        var last = c.getBoundingClientRect(), fr = first.get(c);
+        if (fr) {
+          var dx = fr.left - last.left, dy = fr.top - last.top;
+          if (dx || dy) c.animate([{ transform: 'translate(' + dx + 'px,' + dy + 'px)' }, { transform: 'none' }], { duration: 450, easing: 'cubic-bezier(.4,0,.2,1)' });
+        } else {
+          c.animate([{ opacity: 0, transform: 'scale(.85)' }, { opacity: 1, transform: 'none' }], { duration: 340, easing: 'ease' });
+        }
+      });
+    }
+    meta.innerHTML = 'Showing ' + labels[f] + (f === 'all' ? ' ' + legend : '');
+    pills.forEach(function (p) { p.classList.toggle('on', p.dataset.f === f); });
+  }
+  pills.forEach(function (p) { p.addEventListener('click', function () { setFilter(p.dataset.f); }); });
+})();
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
